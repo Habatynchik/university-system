@@ -7,11 +7,11 @@ import com.robocode.model.entity.Course;
 import com.robocode.model.entity.Grade;
 import com.robocode.model.entity.Student;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Slf4j
 @AllArgsConstructor
@@ -38,7 +38,7 @@ public class UniversitySystem {
         return gradeDAO.create(grade);
     }
 
-    public void addMarkToStudent(Student student, Course course, int mark) {
+    public void addMarkToStudent(Student student, Course course, Long mark) {
         Grade grade = gradeDAO.getByStudentIdAndCourseId(student.getId(), course.getId());
         grade.setMark(mark);
 
