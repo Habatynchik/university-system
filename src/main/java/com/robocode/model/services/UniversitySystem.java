@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@Data
 @AllArgsConstructor
 public class UniversitySystem {
     private final CourseDAO courseDAO;
