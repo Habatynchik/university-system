@@ -17,6 +17,9 @@ public class CourseDAOImpl implements CourseDAO {
         return false;
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public Optional<Course> getById(long id) {
         return Optional.empty();

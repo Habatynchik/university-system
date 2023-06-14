@@ -84,21 +84,33 @@ public class StudentDAOImpl implements StudentDAO {
         return Optional.empty();
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public Optional<Student> getById(long id) {
         return Optional.empty();
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public Optional<Student> update(Student entity) {
         return Optional.empty();
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public boolean deleteById(long id) {
         return false;
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public List<Student> getAllStudentByCourseId(long courseId) {
         return null;

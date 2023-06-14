@@ -13,6 +13,9 @@ public class GradeDAOImpl implements GradeDAO {
         return Optional.empty();
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public List<Grade> getAllByStudentId(long studentId) {
         return null;

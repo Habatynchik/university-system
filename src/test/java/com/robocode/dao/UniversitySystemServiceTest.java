@@ -8,12 +8,10 @@ import com.robocode.model.dao.impl.GradeDAOImpl;
 import com.robocode.model.dao.impl.StudentDAOImpl;
 import com.robocode.model.entity.Student;
 import com.robocode.model.services.UniversitySystemService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UniversitySystemServiceTest {
     static CourseDAO courseDAO;
@@ -43,12 +41,14 @@ class UniversitySystemServiceTest {
 
     @Test
     void createTest() {
-        assertTrue(universitySystemService.addNewStudent(testStudent));
+        Assertions.assertTrue(universitySystemService.addNewStudent(testStudent));
     }
 
     @Test
     void createTestWithDuplicateStudentCardNumber() {
-        assertFalse(universitySystemService.addNewStudent(testStudent));
+        Assertions.assertFalse(universitySystemService.addNewStudent(testStudent));
     }
+
+
 
 }
