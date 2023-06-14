@@ -6,28 +6,33 @@ import com.robocode.model.dao.StudentDAO;
 import com.robocode.model.entity.Course;
 import com.robocode.model.entity.Grade;
 import com.robocode.model.entity.Student;
+import com.robocode.model.exceptions.ObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Slf4j
 @AllArgsConstructor
-public class UniversitySystem {
+public class UniversitySystemService {
     private final CourseDAO courseDAO;
     private final GradeDAO gradeDAO;
     private final StudentDAO studentDAO;
 
 
     public boolean addNewStudent(Student student) {
-        return studentDAO.create(student);
+        if (studentDAO.getByStudentCardId(student.getStudentCardNumber()).isEmpty()){
+            return studentDAO.create(student);
+        }
+        return false;
     }
+
 
     public boolean addNewCourse(Course course) {
         return courseDAO.create(course);
     }
+
 
     public boolean addStudentOnCourse(Student student, Course course) {
         Grade grade = Grade.builder()
@@ -38,8 +43,9 @@ public class UniversitySystem {
         return gradeDAO.create(grade);
     }
 
-    public void addMarkToStudent(Student student, Course course, Long mark) {
-        Grade grade = gradeDAO.getByStudentIdAndCourseId(student.getId(), course.getId());
+    public void addMarkToStudent(Student student, Course course, Long mark) throws ObjectNotFoundException {
+        Grade grade = gradeDAO.getByStudentIdAndCourseId(student.getId(), course.getId())
+                .orElseThrow(ObjectNotFoundException::new);
         grade.setMark(mark);
 
         gradeDAO.update(grade);
@@ -49,11 +55,11 @@ public class UniversitySystem {
         return studentDAO.getAllStudentByCourseId(course.getId());
     }
 
-    public double getStudentAverageGrade(Student student) {
+    public double getStudentAverageGrade(Student student) throws ObjectNotFoundException {
         return gradeDAO.getAllByStudentId(student.getId()).stream()
                 .mapToLong(Grade::getMark)
                 .average()
-                .orElse(0.);
+                .orElseThrow(() -> new ObjectNotFoundException(student.toString() + "not found"));
     }
 
     public List<Course> getCourseListByStudent(Student student) {
