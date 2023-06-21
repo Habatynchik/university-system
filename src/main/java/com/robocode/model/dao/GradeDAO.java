@@ -5,7 +5,7 @@ import com.robocode.model.entity.Grade;
 import java.util.List;
 import java.util.Optional;
 
-public interface GradeDAO extends ObjectDAO<Grade>{
+public interface GradeDAO extends CrudDAO<Grade> {
 
     Optional<Grade> getByStudentIdAndCourseId(long studentId, long courseId);
 

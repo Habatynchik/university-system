@@ -5,7 +5,7 @@ import com.robocode.model.entity.Student;
 import java.util.List;
 import java.util.Optional;
 
-public interface StudentDAO extends ObjectDAO<Student> {
+public interface StudentDAO extends CrudDAO<Student> {
 
     List<Student> getAllStudentByCourseId(long courseId);
 

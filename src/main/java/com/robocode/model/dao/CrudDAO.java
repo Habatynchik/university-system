@@ -2,7 +2,7 @@ package com.robocode.model.dao;
 
 import java.util.Optional;
 
-public interface ObjectDAO<E> {
+public interface CrudDAO<E> {
     boolean create(E entity);
 
     Optional<E> getById(long id);
