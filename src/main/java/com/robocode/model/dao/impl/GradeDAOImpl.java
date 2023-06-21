@@ -13,9 +13,6 @@ public class GradeDAOImpl implements GradeDAO {
         return Optional.empty();
     }
 
-    /*
-     * TODO realize this method
-     * */
     @Override
     public List<Grade> getAllByStudentId(long studentId) {
         return null;
@@ -29,11 +26,17 @@ public class GradeDAOImpl implements GradeDAO {
         return false;
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public Optional<Grade> getById(long id) {
         return Optional.empty();
     }
 
+    /*
+     * TODO realize this method
+     * */
     @Override
     public Optional<Grade> update(Grade entity) {
         return Optional.empty();
