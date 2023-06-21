@@ -62,7 +62,7 @@ public class StudentDAOImpl implements StudentDAO {
 
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
-            log.error();
+            log.error(SQL_ERROR);
             return false;
         }
     }
